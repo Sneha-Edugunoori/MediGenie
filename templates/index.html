@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Unified Digital Health Record System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!--css page link-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="bg-particles" id="particles"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">MediGenie</a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item"><a href="#home">Home</a></li>
+                <li class="nav-item"><a href="#about">About</a></li>
+                <li class="nav-item"><a href="#features">Features</a></li>
+                <li class="nav-item"><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <!-- 3D Floating Elements -->
+        <div class="hero-3d-container">
+            <div class="floating-elements">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </div>
+
+        <!-- Medical Icons Animation -->
+        <div class="medical-icons-container" id="medical-icons"></div>
+        
+        <div class="hero-content">
+            <div class="hero-badge"> </div>
+            <h1>Unified Digital Health Record System</h1>
+            <p>Voice-Enabled Prescriptions & Seamless Government Integration with AI-Powered Analytics</p>
+            <div class="cta-container">
+                <button id="getStartBtn" class="btn-primary">Get Started</button>
+                <a href="#about" class="cta-secondary">Login</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="quote-container">
+            <div class="quote-text">At MediGenie, we believe technology and compassion together can create healthier lives.</div>
+            <div class="quote-author">— MediGenie Team</div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="features-container">
+            <div class="section-header">
+                <div class="section-badge">✨ Revolutionary Features</div>
+                <h2>Transforming Healthcare</h2>
+                <p class="features-subtitle">Experience the future of digital healthcare with our cutting-edge platform designed for patients, doctors, and government agencies.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-animation-delay="0">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                    </div>
+                    <h3>Smart Patient Portal</h3>
+                    <p>Advanced patient interface with AI-powered health insights, secure medical record access, intelligent appointment scheduling, and real-time health monitoring with personalized recommendations.</p>
+                </div>
+                
+                <div class="feature-card" data-animation-delay="200">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                    </div>
+                    <h3>AI Doctor Dashboard</h3>
+                    <p>Revolutionary healthcare professional tools featuring voice-enabled prescription writing, predictive patient analytics, automated diagnosis assistance, and seamless integration with medical devices.</p>
+                </div>
+                
+                <div class="feature-card" data-animation-delay="400">
+                    <div class="feature-icon-container">
+                        <div class="feature-icon-bg"></div>
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <h3>Government Analytics</h3>
+                    <p>Comprehensive public health insights with real-time epidemic tracking, resource optimization algorithms, population health trends analysis, and policy impact assessment tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>MediGenie</h3>
+                <p>Transforming healthcare through innovative digital solutions. Our mission is to create a seamless, secure, and intelligent healthcare ecosystem for everyone.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MediGenie. All rights reserved. | Powered by AI & Innovation</p>
+        </div>
+    </footer>
+
+    <!-- Fixed Get Started Modal -->
+    <div id="getStartedModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="modal-title">Choose Your Portal</h2>
+            <div class="portal-options">
+                <div class="portal-option" onclick="selectPortal('patient')">
+                    <div class="portal-icon">👤</div>
+                    <div>
+                        <h3>Patient</h3>
+                        <p>Access your health records and appointments</p>
+                    </div>
+                </div>
+                
+                <div class="portal-option" onclick="selectPortal('doctor')">
+                    <div class="portal-icon">👨‍⚕️</div>
+                    <div>
+                        <h3>Doctor</h3>
+                        <p>Manage patients and create prescriptions</p>
+                    </div>
+                </div>
+                
+                <div class="portal-option" onclick="selectPortal('government')">
+                    <div class="portal-icon">🏛️</div>
+                    <div>
+                        <h3>Government</h3>
+                        <p>View analytics and reports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+const portalUrls = {
+    patient: "{{ url_for('patient_signup') }}",
+    doctor: "{{ url_for('doctor_signup') }}",
+    government: "{{ url_for('government_signup') }}"
+};
+</script>
+
+    <!--js page link-->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> 
+</body>
+</html>

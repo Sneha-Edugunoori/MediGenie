@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Signup - MediGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_signup.css') }}">
+</head>
+<body>
+    <div class="signup-container">
+        <button class="back-btn" onclick="goBack()">←</button>
+        
+        <div class="logo">
+            <h1>MediGenie</h1>
+        </div>
+        
+        <div class="portal-title">
+            Doctor Portal - Create Account
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Account created successfully! Redirecting to login...
+        </div>
+
+        <form id="doctorSignupForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div class="error-message" id="fullNameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <select id="specialization" name="specialization" required>
+                    <option value="">Select your specialization</option>
+                    <option value="general-physician">General Physician</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="dermatologist">Dermatologist</option>
+                    <option value="neurologist">Neurologist</option>
+                    <option value="pediatrician">Pediatrician</option>
+                    <option value="orthopedic">Orthopedic</option>
+                    <option value="psychiatrist">Psychiatrist</option>
+                    <option value="gynecologist">Gynecologist</option>
+                    <option value="ophthalmologist">Ophthalmologist</option>
+                    <option value="ent">ENT Specialist</option>
+                    <option value="radiologist">Radiologist</option>
+                    <option value="anesthesiologist">Anesthesiologist</option>
+                </select>
+                <div class="error-message" id="specializationError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="licenseNumber">Medical License Number</label>
+                <input type="text" id="licenseNumber" name="licenseNumber" required>
+                <div class="error-message" id="licenseNumberError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+
+            <button type="submit" class="signup-btn">Create Account</button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="{{ url_for('doctor_login') }}">Login here</a>
+        </div>
+    </div>
+
+ <script src="{{ url_for('static', filename='js/doctor_signup.js') }}"></script> 
+</body>
+</html>
