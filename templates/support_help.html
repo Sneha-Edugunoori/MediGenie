@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Support & Help</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/support.css') }}">
+    
+</head>
+<body>
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h5>MediGenie</h5>
+                        <p>Patient Portal</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/appointments" class="nav-link">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Appointments</span>
+                </a>
+                <a href="/medical-records" class="nav-link">
+                    <i class="far fa-file-alt"></i>
+                    <span>Medical Records</span>
+                </a>
+                <a href="/communication" class="nav-link">
+                    <i class="far fa-comment"></i>
+                    <span>Communication</span>
+                </a>
+                <a href="/health-tracking" class="nav-link">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health Tracking</span>
+                </a>
+                <a href="/profile-settings" class="nav-link">
+                    <i class="far fa-user"></i>
+                    <span>Profile & Settings</span>
+                </a>
+                <a href="/support" class="nav-link active">
+                    <i class="far fa-question-circle"></i>
+                    <span>Support & Help</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-link" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="notification-bell">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-dropdown">
+                    <button class="profile-btn" onclick="toggleProfileDropdown()">
+                        <div class="profile-avatar">JD</div>
+                        <span class="fw-500">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-menu" id="profileDropdown" style="display: none; position: absolute; right: 0; top: 100%; background: white; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                        <a class="dropdown-item" href="/profile-settings" style="padding: 10px 15px; color: #4a5568; text-decoration: none; display: block;">
+                            <i class="far fa-user"></i> My Account
+                        </a>
+                        <a class="dropdown-item" href="/profile-settings" style="padding: 10px 15px; color: #4a5568; text-decoration: none; display: block;">
+                            <i class="fas fa-user-edit"></i> Profile & Settings
+                        </a>
+                        <a class="dropdown-item" href="/profile-settings" style="padding: 10px 15px; color: #4a5568; text-decoration: none; display: block;">
+                            <i class="fas fa-cog"></i> Account Settings
+                        </a>
+                        <hr style="margin: 5px 0; border-color: #e2e8f0;">
+                        <a class="dropdown-item text-danger" href="#" onclick="logout()" style="padding: 10px 15px; color: #ef4444; text-decoration: none; display: block;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Content -->
+            <div class="support-content">
+                <!-- Header -->
+                <div class="support-header">
+                    <h1 class="support-title">Support & Help</h1>
+                    <p class="support-subtitle">Get help and find answers to your questions</p>
+                </div>
+
+                <!-- Support Cards -->
+                <div class="support-cards">
+                    <div class="support-card">
+                        <div class="support-icon chat">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h5>24/7 Live Chat</h5>
+                        <p>Get instant help from our support team</p>
+                        <div class="support-info">Available</div>
+                        <button class="support-btn" onclick="startChat()">Start Chat</button>
+                    </div>
+
+                    <div class="support-card">
+                        <div class="support-icon phone">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>Phone Support</h5>
+                        <p>Speak directly with a support representative</p>
+                        <div class="support-info">Mon-Fri 8AM-8PM</div>
+                        <button class="support-btn secondary" onclick="callNow()">Call Now</button>
+                    </div>
+
+                    <div class="support-card">
+                        <div class="support-icon email">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5>Email Support</h5>
+                        <p>Send us an email and we'll respond within 24 hours</p>
+                        <div class="support-info">Response within 24h</div>
+                        <button class="support-btn tertiary" onclick="sendEmail()">Send Email</button>
+                    </div>
+                </div>
+
+                <!-- Support Tabs -->
+                <div class="support-tabs">
+                    <button class="support-tab-btn active" onclick="switchSupportTab('faq')">FAQ</button>
+                    <button class="support-tab-btn" onclick="switchSupportTab('tickets')">Support Tickets</button>
+                    <button class="support-tab-btn" onclick="switchSupportTab('contact')">Contact Info</button>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="faq-section" id="faqSection">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="far fa-question-circle"></i>
+                        </div>
+                        <h3 class="section-title">Frequently Asked Questions</h3>
+                    </div>
+
+                    <div class="search-box">
+                        <input type="text" class="search-input" placeholder="Search FAQ..." onkeyup="searchFAQ(this.value)">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+
+                    <div class="faq-category">
+                        <div class="faq-category-title">
+                            <div class="faq-category-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            Account Management
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How do I reset my password?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                To reset your password, click on "Forgot Password" on the login page, enter your email address, and follow the instructions sent to your email.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How can I update my personal information?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Go to Profile & Settings from the sidebar menu, then click on "Personal Information" to update your details.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How do I change my notification preferences?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Navigate to Profile & Settings, then select "Notification Settings" to customize how and when you receive notifications.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <div class="faq-category-title">
+                            <div class="faq-category-icon">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            Appointments
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How do I book an appointment?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Go to the Appointments page and click "Book New Appointment". Select your doctor, preferred date and time, then confirm your booking.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Can I reschedule my appointment?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Yes, you can reschedule appointments up to 24 hours before the scheduled time. Click on the "Reschedule" button on your appointment card.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                What if I need to cancel my appointment?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                You can cancel appointments through the Appointments page. Please cancel at least 24 hours in advance to avoid cancellation fees.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <div class="faq-category-title">
+                            <div class="faq-category-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            Medical Records
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How do I upload my medical documents?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Navigate to Medical Records, click on "Upload Documents", select your files (PDF, JPG, PNG supported), and add relevant descriptions.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                What file formats are supported?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                We support PDF, JPG, PNG, and DOCX formats. Files should be under 10MB in size for optimal uploading.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How do I share records with my doctor?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Select the documents you want to share, click "Share", choose your doctor from the list, and add any relevant notes.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-category">
+                        <div class="faq-category-title">
+                            <div class="faq-category-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            Privacy & Security
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                How secure is my health information?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Your health information is protected with bank-level encryption and complies with HIPAA regulations. We use advanced security measures to keep your data safe.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Who can access my medical records?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Only you and healthcare providers you explicitly authorize can access your medical records. We maintain strict access controls and audit logs.
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" onclick="toggleFAQ(this)">
+                                Can I delete my account and data?
+                                <i class="fas fa-chevron-down chevron-icon"></i>
+                            </button>
+                            <div class="faq-answer">
+                                Yes, you can request account deletion through Profile & Settings. Please note that some medical records may be retained as required by law.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support Tickets Section -->
+                <div class="faq-section" id="ticketsSection" style="display: none;">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <h3 class="section-title">Support Tickets</h3>
+                    </div>
+
+                    <div style="text-align: center; padding: 40px; color: #6B7280;">
+                        <i class="fas fa-inbox" style="font-size: 48px; margin-bottom: 15px; display: block; color: var(--primary-blue);"></i>
+                        <h4>No Support Tickets</h4>
+                        <p>You haven't submitted any support tickets yet.</p>
+                        <button class="support-btn" onclick="createTicket()" style="margin-top: 15px;">
+                            <i class="fas fa-plus"></i> Create New Ticket
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Contact Info Section -->
+                <div class="contact-info-section" id="contactSection" style="display: none;">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-address-card"></i>
+                        </div>
+                        <h3 class="section-title">Contact Information</h3>
+                    </div>
+
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h6>Phone Support</h6>
+                            <p>Mon-Fri: 8:00 AM - 8:00 PM</p>
+                            <p><strong>1-800-MEDIGENIE</strong></p>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h6>Email Support</h6>
+                            <p>24/7 Email Support</p>
+                            <p><strong>support@medigenie.com</strong></p>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h6>Live Chat</h6>
+                            <p>Available 24/7</p>
+                            <p><strong>Instant Response</strong></p>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h6>Office Address</h6>
+                            <p>123 Healthcare Ave</p>
+                            <p><strong>Medical City, MC 12345</strong></p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px; padding: 20px; background: var(--pale-blue); border-radius: 10px; text-align: center;">
+                        <h5 style="color: var(--primary-blue); margin-bottom: 10px;">Emergency Contact</h5>
+                        <p style="color: var(--dark-gray); margin-bottom: 5px;">For medical emergencies, please call:</p>
+                        <p style="font-weight: 600; color: #EF4444; font-size: 18px; margin: 0;">911</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="{{ url_for('static', filename='js/support.js') }}"></script>
+</body>
+</html>

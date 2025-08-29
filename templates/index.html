@@ -48,12 +48,12 @@
         <div class="medical-icons-container" id="medical-icons"></div>
         
         <div class="hero-content">
-            <div class="hero-badge"> </div>
+            <div class="hero-badge"><!--Revolutionary Healthcare Platform--></div>
             <h1>Unified Digital Health Record System</h1>
             <p>Voice-Enabled Prescriptions & Seamless Government Integration with AI-Powered Analytics</p>
             <div class="cta-container">
                 <button id="getStartBtn" class="btn-primary">Get Started</button>
-                <a href="#about" class="cta-secondary">Login</a>
+                <button id="loginBtn" class="cta-secondary">Login</button>
             </div>
         </div>
     </section>
@@ -131,10 +131,10 @@
         </div>
     </footer>
 
-    <!-- Fixed Get Started Modal -->
+    <!-- Get Started Modal -->
     <div id="getStartedModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" id="closeGetStarted">&times;</span>
             <h2 class="modal-title">Choose Your Portal</h2>
             <div class="portal-options">
                 <div class="portal-option" onclick="selectPortal('patient')">
@@ -164,12 +164,53 @@
         </div>
     </div>
 
-    <script>
-const portalUrls = {
-    patient: "{{ url_for('patient_signup') }}",
-    doctor: "{{ url_for('doctor_signup') }}",
-    government: "{{ url_for('government_signup') }}"
-};
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeLogin">&times;</span>
+            <h2 class="modal-title">Login to Your Portal</h2>
+            <div class="portal-options">
+                <div class="portal-option" onclick="selectLoginPortal('patient')">
+                    <div class="portal-icon">👤</div>
+                    <div>
+                        <h3>Patient Login</h3>
+                        <p>Access your health records and appointments</p>
+                    </div>
+                </div>
+                
+                <div class="portal-option" onclick="selectLoginPortal('doctor')">
+                    <div class="portal-icon">👨‍⚕️</div>
+                    <div>
+                        <h3>Doctor Login</h3>
+                        <p>Manage patients and create prescriptions</p>
+                    </div>
+                </div>
+                
+                <div class="portal-option" onclick="selectLoginPortal('government')">
+                    <div class="portal-icon">🏛️</div>
+                    <div>
+                        <h3>Government Login</h3>
+                        <p>View analytics and reports</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<script>
+        // Portal URLs - Replace with actual URLs
+        const portalUrls = {
+            patient: "/patient_signup",
+            doctor: "/doctor_signup",
+            government: "/government_signup"
+        };
+
+        const loginPortalUrls = {
+            patient: "/patient_login",
+            doctor: "/doctor_login",
+            government: "/government_login"
+        };
 </script>
 
     <!--js page link-->

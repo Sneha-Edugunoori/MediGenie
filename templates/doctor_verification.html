@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Verification - MediGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_verification.css') }}">
+
+</head>
+<body>
+    <div class="verification-container">
+        <div class="logo">
+            <h1>MediGenie</h1>
+        </div>
+
+        <div class="verification-icon"></div>
+
+        <h2 class="status-title">Account Under Verification</h2>
+        <p class="status-message">
+            Thank you for registering with MediGenie! Your account is currently being reviewed by our medical board and government authorities for verification.
+        </p>
+
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+
+        <div class="verification-details">
+            <h3>Verification Process</h3>
+            <ul class="verification-steps">
+                <li>Medical license validation</li>
+                <li>Government database verification</li>
+                <li>Professional credentials review</li>
+                <li>Background security check</li>
+            </ul>
+        </div>
+
+        <div class="timeline">
+            <h4>Expected Timeline</h4>
+            <p><strong>Standard Review:</strong> 2-3 business days</p>
+            <p><strong>Complex Cases:</strong> Up to 7 business days</p>
+        </div>
+
+        <div class="contact-info">
+            <h4>Need Help?</h4>
+            <p><strong>Email:</strong> verification@medigenie.com</p>
+            <p><strong>Phone:</strong> +91-1800-MEDIGEN</p>
+            <p><strong>Hours:</strong> Mon-Fri, 9 AM - 6 PM IST</p>
+        </div>
+
+        <div class="action-buttons">
+            <a href="mailto:verification@medigenie.com" class="btn btn-primary">Contact Support</a>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+        <script src="{{ url_for('static', filename='js/doctor_verification.js') }}"></script> 
+
+</body>
+</html>

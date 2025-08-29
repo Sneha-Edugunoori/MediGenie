@@ -135,59 +135,81 @@
             });
         }
 
-        // Fixed Modal Functions
-        const modal = document.getElementById('getStartedModal');
+        // Modal Functions
+        const getStartedModal = document.getElementById('getStartedModal');
+        const loginModal = document.getElementById('loginModal');
         const getStartBtn = document.getElementById('getStartBtn');
-        const closeBtn = document.querySelector('.close');
+        const loginBtn = document.getElementById('loginBtn');
 
-        function openModal() {
-            if (modal) {
-                modal.classList.add('show');
-                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        function openGetStartedModal() {
+            if (getStartedModal) {
+                getStartedModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
             }
         }
 
-        function closeModal() {
-            if (modal) {
-                modal.classList.remove('show');
-                document.body.style.overflow = ''; // Restore scrolling
+        function closeGetStartedModal() {
+            if (getStartedModal) {
+                getStartedModal.classList.remove('show');
+                document.body.style.overflow = '';
             }
         }
 
-        // portal selction
-        // const portalUrls = {
-        //     patient: "{{ url_for('patient_signup') }}",
-        //     doctor: "{{ url_for('doctor_signup') }}",
-        //     government: "{{ url_for('gov_signup') }}"
-        // };
+        function openLoginModal() {
+            if (loginModal) {
+                loginModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
+        function closeLoginModal() {
+            if (loginModal) {
+                loginModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        }
+        
         function selectPortal(portalType) {
-            closeModal();
-            window.location.href = portalUrls[portalType];
+            closeGetStartedModal();
+            window.location.href = portalUrls[portalType];  // navigate to signup
         }
+
+        function selectLoginPortal(portalType) {
+            closeLoginModal();
+            window.location.href = loginPortalUrls[portalType];  // navigate to login
+        }
+
 
         // Event Listeners
         if (getStartBtn) {
-            getStartBtn.addEventListener('click', openModal);
+            getStartBtn.addEventListener('click', openGetStartedModal);
         }
 
-        if (closeBtn) {
-            closeBtn.addEventListener('click', closeModal);
+        if (loginBtn) {
+            loginBtn.addEventListener('click', openLoginModal);
         }
+
+        // Close button event listeners
+        document.getElementById('closeGetStarted')?.addEventListener('click', closeGetStartedModal);
+        document.getElementById('closeLogin')?.addEventListener('click', closeLoginModal);
 
         // Close modal when clicking outside
-        if (modal) {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
-            });
-        }
+        [getStartedModal, loginModal].forEach(modal => {
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        if (modal === getStartedModal) closeGetStartedModal();
+                        if (modal === loginModal) closeLoginModal();
+                    }
+                });
+            }
+        });
 
         // Close modal with Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal && modal.classList.contains('show')) {
-                closeModal();
+            if (e.key === 'Escape') {
+                if (getStartedModal?.classList.contains('show')) closeGetStartedModal();
+                if (loginModal?.classList.contains('show')) closeLoginModal();
             }
         });
 
@@ -202,6 +224,7 @@
         // Performance-optimized initialization
         window.addEventListener('DOMContentLoaded', () => {
             requestAnimationFrame(() => setTimeout(initializeFeatures, 100));
+            document.body.classList.add('loaded');
         });
 
         // Handle window resize
@@ -234,10 +257,3 @@
             if (e.key === 'Tab') document.body.classList.add('keyboard-navigation');
         });
         document.addEventListener('mousedown', () => document.body.classList.remove('keyboard-navigation'));
-
-        // Loading animation
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-            document.body.style.transform = 'translateY(0)';
-        });
- 

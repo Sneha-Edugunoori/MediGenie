@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Medical Records</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/records.css') }}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h5>MediGenie</h5>
+                        <p>Patient Portal</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <a href="/dashboard" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/appointments" class="nav-link">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>Appointments</span>
+                </a>
+                <a href="/medical-records" class="nav-link active">
+                    <i class="far fa-file-alt"></i>
+                    <span>Medical Records</span>
+                </a>
+                <a href="/communication" class="nav-link">
+                    <i class="far fa-comment"></i>
+                    <span>Communication</span>
+                </a>
+                <a href="/health-tracking" class="nav-link">
+                    <i class="fas fa-heartbeat"></i>
+                    <span>Health Tracking</span>
+                </a>
+                <a href="/profile-settings" class="nav-link">
+                    <i class="far fa-user"></i>
+                    <span>Profile & Settings</span>
+                </a>
+                <a href="/support" class="nav-link">
+                    <i class="far fa-question-circle"></i>
+                    <span>Support & Help</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-link" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navigation -->
+            <div class="top-nav">
+                <div class="notification-bell">
+                    <i class="far fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="profile-dropdown">
+                    <button class="profile-btn" onclick="toggleProfileDropdown()">
+                        <div class="profile-avatar">JD</div>
+                        <span class="fw-500">John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    
+                    <div class="dropdown-menu" id="profileDropdown" style="display: none; position: absolute; right: 0; top: 100%; background: white; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                        <a class="dropdown-item" href="/profile-settings" style="padding: 10px 15px; color: #4a5568; text-decoration: none; display: block;">
+                            <i class="far fa-user"></i> My Account
+                        </a>
+                        <hr style="margin: 5px 0; border-color: #e2e8f0;">
+                        <a class="dropdown-item text-danger" href="#" onclick="logout()" style="padding: 10px 15px; color: #ef4444; text-decoration: none; display: block;">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Records Content -->
+            <div class="medical-records-content">
+                <!-- Header -->
+                <div class="records-header">
+                    <div>
+                        <h1 class="records-title">Medical Records</h1>
+                        <p class="records-subtitle">Securely store and manage your health documents</p>
+                    </div>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="upload-section">
+                    <div class="upload-area" id="uploadArea" onclick="triggerFileInput()">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">Scan Your Medical Reports</div>
+                        <div class="upload-subtext">
+                            Drop your files here or click to browse<br>
+                            Supports PDF, JPG, PNG files up to 10MB. Images will be processed with Smart OCR
+                        </div>
+                    </div>
+                    
+                    <div class="upload-actions">
+                        <button class="action-btn btn-browse" onclick="triggerFileInput()">
+                            <i class="fas fa-folder-open"></i>
+                            Browse Files
+                        </button>
+                        <button class="action-btn btn-camera" onclick="openCamera()">
+                            <i class="fas fa-camera"></i>
+                            Take Photo
+                        </button>
+                    </div>
+
+                    <input type="file" class="file-input" id="fileInput" accept="image/*,.pdf" multiple onchange="handleFileUpload(event)">
+                </div>
+
+                <!-- Medical Records List -->
+                <div class="records-section">
+                    <h3 class="section-title">Your Medical Records</h3>
+                    
+                    <div class="record-item">
+                        <div class="record-icon icon-blood">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div class="record-info">
+                            <div class="record-title">Blood Test Results - Complete Panel</div>
+                            <p class="record-details">2/28/2024 • Dr. Sarah Smith • Extracted via OCR</p>
+                        </div>
+                        <div class="record-actions">
+                            <button class="icon-btn btn-view" title="View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="icon-btn btn-download" title="Download">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn btn-delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="record-item">
+                        <div class="record-icon icon-xray">
+                            <i class="fas fa-x-ray"></i>
+                        </div>
+                        <div class="record-info">
+                            <div class="record-title">Chest X-Ray Report</div>
+                            <p class="record-details">2/15/2024 • Dr. Michael Johnson • Scanned Report</p>
+                        </div>
+                        <div class="record-actions">
+                            <button class="icon-btn btn-view" title="View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="icon-btn btn-download" title="Download">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn btn-delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="record-item">
+                        <div class="record-icon icon-prescription">
+                            <i class="fas fa-prescription-bottle-alt"></i>
+                        </div>
+                        <div class="record-info">
+                            <div class="record-title">Prescription - Heart Medication</div>
+                            <p class="record-details">2/5/2024 • Dr. Sarah Smith • OCR Processed</p>
+                        </div>
+                        <div class="record-actions">
+                            <button class="icon-btn btn-view" title="View">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="icon-btn btn-download" title="Download">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn btn-delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OCR Processing Overlay -->
+    <div class="processing-overlay" id="processingOverlay">
+        <div class="processing-content">
+            <div class="processing-icon">
+                <i class="fas fa-cog"></i>
+            </div>
+            <h3 class="processing-title">Processing Your Document</h3>
+            <p class="processing-text">Using OCR to extract medical data from your report...</p>
+        </div>
+    </div>
+
+    <!-- Camera Modal -->
+    <div class="camera-modal" id="cameraModal">
+        <div class="camera-content">
+            <h3>Take a Photo of Your Report</h3>
+            <div class="camera-preview" id="cameraPreview">
+                <i class="fas fa-camera" style="font-size: 48px;"></i><br>
+                Camera will appear here
+            </div>
+            <div class="camera-actions">
+                <button class="action-btn btn-camera" onclick="capturePhoto()">
+                    <i class="fas fa-camera"></i>
+                    Capture
+                </button>
+                <button class="action-btn btn-browse" onclick="closeCamera()">
+                    <i class="fas fa-times"></i>
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/records.js') }}"></script> 
+
+</body>
+</html>
