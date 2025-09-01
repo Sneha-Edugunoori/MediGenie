@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doctor Login - MediGenie</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor_login.css') }}">
+    <title>Government Login - MediGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth/government_login.css') }}">
 </head>
 <body>
     <div class="login-container">
@@ -15,16 +15,20 @@
         </div>
         
         <div class="portal-title">
-            Doctor Portal - Login
+            Government Portal - Secure Login
+        </div>
+
+        <div class="security-note">
+            <strong>Security Notice:</strong> This is a secure government portal. All activities are logged and monitored.
         </div>
 
         <div class="success-message" id="successMessage">
-            Login successful! Redirecting to dashboard...
+            Login successful! Redirecting to government dashboard...
         </div>
 
-        <form id="doctorLoginForm">
+        <form id="governmentLoginForm">
             <div class="form-group">
-                <label for="email">Email Address</label>
+                <label for="email">Official Email Address</label>
                 <input type="email" id="email" name="email" required>
                 <div class="error-message" id="emailError"></div>
             </div>
@@ -35,7 +39,7 @@
                 <div class="error-message" id="passwordError"></div>
             </div>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" class="login-btn">Secure Login</button>
         </form>
 
         <div class="forgot-password">
@@ -43,10 +47,9 @@
         </div>
 
         <div class="signup-link">
-            Don't have an account? <a href="{{ url_for('doctor_signup') }}">Sign up here</a>
+            Need access? <a href="government-signup.html">Request Account</a>
         </div>
     </div>
- <script src="{{ url_for('static', filename='js/doctor_login.js') }}"></script>
- 
+    <script src="{{ url_for('static', filename='js/auth/government_login.js') }}"></script>
 </body>
 </html>

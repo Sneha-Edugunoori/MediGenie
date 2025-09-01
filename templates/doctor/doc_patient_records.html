@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Patient Records</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/doc_patient_records.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item active" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Patient Records</h1>
+                <p>Manage patient information and medical history</p>
+            </div>
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-info">
+                        <div class="user-name">Dr. Michael Rodriguez</div>
+                        <div class="user-role">Cardiologist</div>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Search Section -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search patients by name or condition...">
+                </div>
+            </div>
+
+            <!-- Patients Grid -->
+            <div class="patients-grid">
+                <!-- Patient Card 1 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar blue">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Sarah Johnson</h3>
+                            <div class="meta">34 years, Female</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0123</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>sarah.j@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-10</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">Hypertension</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Patient Card 2 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar orange">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Mike Chen</h3>
+                            <div class="meta">45 years, Male</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0124</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>mike.chen@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-12</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">Diabetes Type 2</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Patient Card 3 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar purple">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Emma Davis</h3>
+                            <div class="meta">28 years, Female</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0125</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>emma.davis@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-14</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">Anxiety Disorder</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Patient Card 4 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar blue">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>John Smith</h3>
+                            <div class="meta">52 years, Male</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0126</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>john.smith@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-08</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">High Cholesterol</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Patient Card 5 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar orange">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Lisa Wilson</h3>
+                            <div class="meta">41 years, Female</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0127</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>lisa.wilson@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-15</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">Asthma</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+
+                <!-- Patient Card 6 -->
+                <div class="patient-card">
+                    <div class="patient-header">
+                        <div class="patient-avatar purple">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>David Brown</h3>
+                            <div class="meta">38 years, Male</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="patient-details">
+                        <div class="detail-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+1 555-0128</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>david.brown@email.com</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Last visit: 2024-01-09</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Primary Condition</div>
+                        <div class="condition-value">Back Pain</div>
+                    </div>
+
+                    <button class="view-details-btn">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/doc_patient_records.js') }}"></script>
+</body>
+</html>

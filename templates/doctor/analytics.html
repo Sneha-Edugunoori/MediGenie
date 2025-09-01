@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Analytics & Reports</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/analytics.css') }}">
+</head>
+<body>
+    <!-- Correct MediGenie Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item " id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item active" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="content-header">
+            <div class="header-left">
+                <h1>Analytics & Reports</h1>
+                <p>Track your performance and patient statistics</p>
+            </div>
+            <div class="header-right">
+                <div class="time-filter">
+                    <select class="filter-dropdown">
+                        <option value="this-month">This Month</option>
+                        <option value="last-month">Last Month</option>
+                        <option value="last-3-months">Last 3 Months</option>
+                        <option value="last-6-months">Last 6 Months</option>
+                        <option value="this-year">This Year</option>
+                    </select>
+                </div>
+                <button class="export-btn">
+                    <i class="fas fa-download"></i>
+                    Export Report
+                </button>
+            </div>
+        </div>
+
+        <!-- Analytics Content -->
+        <div class="analytics-content">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Total Patients</div>
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">248</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +12%
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Appointments Today</div>
+                        <div class="stat-icon green">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">14</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +3
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Average Session Time</div>
+                        <div class="stat-icon orange">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">28 min</div>
+                    <div class="stat-change negative">
+                        <i class="fas fa-arrow-down"></i>
+                        -2 min
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-title">Monthly Revenue</div>
+                        <div class="stat-icon purple">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">$12,100</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +8.5%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs-container">
+                <div class="tab-nav">
+                    <button class="tab-btn active">Overview</button>
+                    <button class="tab-btn">Patients</button>
+                    <button class="tab-btn">Revenue</button>
+                    <button class="tab-btn">Activity</button>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Monthly Trends</div>
+                        <div class="chart-subtitle">Patient visits and appointments over time</div>
+                    </div>
+                    <div class="chart-content">
+                        <div>Chart visualization will be implemented here</div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <div class="chart-title">Weekly Schedule</div>
+                        <div class="chart-subtitle">Appointments per day this week</div>
+                    </div>
+                    <div class="chart-content">
+                        <div>Chart visualization will be implemented here</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/analytics.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Login - MediGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth/doctor_login.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <button class="back-btn" onclick="goBack()">←</button>
+        
+        <div class="logo">
+            <h1>MediGenie</h1>
+        </div>
+        
+        <div class="portal-title">
+            Doctor Portal - Login
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Login successful! Redirecting to dashboard...
+        </div>
+
+        <form id="doctorLoginForm">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+
+        <div class="forgot-password">
+            <a href="#" onclick="forgotPassword()">Forgot Password?</a>
+        </div>
+
+        <div class="signup-link">
+            Don't have an account? <a href="{{ url_for('doctor_signup') }}">Sign up here</a>
+        </div>
+    </div>
+ <script src="{{ url_for('static', filename='js/auth/doctor_login.js') }}"></script>
+ 
+</body>
+</html>

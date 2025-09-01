@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Profile & Settings</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/profile_setting_doc.css') }}">
+</head>
+<body>
+    <!-- Correct MediGenie Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item active" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Profile & Settings</h1>
+                <p>Manage your professional profile and account preferences</p>
+            </div>
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-info">
+                        <div class="user-name">Dr. Michael Rodriguez</div>
+                        <div class="user-role">Cardiologist</div>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2>Profile & Settings</h2>
+                <p>Manage your professional profile and account preferences</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab('profile')">Profile Information</button>
+                <button class="tab-btn" onclick="switchTab('availability')">Availability</button>
+                <button class="tab-btn" onclick="switchTab('security')">Security</button>
+                <button class="tab-btn" onclick="switchTab('preferences')">Preferences</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Profile Information Tab -->
+                <div class="tab-panel active" id="profile-tab">
+                    <div class="profile-section">
+                        <div class="section-header">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <h3>Personal Information</h3>
+                                <p class="section-description">Update your professional details and contact information</p>
+                            </div>
+                        </div>
+
+                        <!-- Profile Photo Section -->
+                        <div class="profile-photo-section">
+                            <div class="profile-photo">DR</div>
+                            <div class="photo-info">
+                                <h4>Profile Photo</h4>
+                                <p>Upload a professional headshot<br>Recommended: 400x400px, max 2MB</p>
+                                <button class="upload-btn">
+                                    <i class="fas fa-camera"></i>
+                                    Upload Photo
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Basic Information -->
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <select id="title" name="title">
+                                    <option value="Dr.">Dr.</option>
+                                    <option value="Prof.">Prof.</option>
+                                    <option value="Mr.">Mr.</option>
+                                    <option value="Ms.">Ms.</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" value="Michael">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" value="Rodriguez">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="specialization">Specialization</label>
+                                <select id="specialization" name="specialization">
+                                    <option value="Cardiology" selected>Cardiology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Orthopedics">Orthopedics</option>
+                                    <option value="Pediatrics">Pediatrics</option>
+                                    <option value="Dermatology">Dermatology</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="licenseNumber">Medical License Number</label>
+                                <input type="text" id="licenseNumber" name="licenseNumber" value="MD-12345678">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" value="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" value="dr.rodriguez@medigeniehealth.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="biography">Professional Biography</label>
+                            <textarea id="biography" name="biography" rows="4">Dr. Michael Rodriguez is a board-certified cardiologist with over 12 years of experience in cardiovascular medicine. He specializes in interventional cardiology and has performed over 2,000 cardiac procedures.</textarea>
+                        </div>
+
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="experience">Years of Experience</label>
+                                <input type="number" id="experience" name="experience" value="12">
+                            </div>
+                            <div class="form-group">
+                                <label for="consultationFee">Consultation Fee ($)</label>
+                                <input type="number" id="consultationFee" name="consultationFee" value="150">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education & Certifications -->
+                    <div class="education-certifications">
+                        <div class="education-section">
+                            <div class="section-header">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h3>Education</h3>
+                                </div>
+                            </div>
+
+                            <div class="education-item">
+                                <div class="education-details">
+                                    <h4>MD</h4>
+                                    <p>Harvard Medical School</p>
+                                </div>
+                                <span class="year-badge">2012</span>
+                            </div>
+
+                            <div class="education-item">
+                                <div class="education-details">
+                                    <h4>Residency</h4>
+                                    <p>Johns Hopkins Hospital</p>
+                                </div>
+                                <span class="year-badge">2015</span>
+                            </div>
+
+                            <div class="education-item">
+                                <div class="education-details">
+                                    <h4>Fellowship</h4>
+                                    <p>Mayo Clinic</p>
+                                </div>
+                                <span class="year-badge">2017</span>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fas fa-plus"></i>
+                                Add Education
+                            </button>
+                        </div>
+
+                        <div class="certifications-section">
+                            <div class="section-header">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <h3>Certifications</h3>
+                                </div>
+                            </div>
+
+                            <div class="certification-item">
+                                <div class="certification-name">
+                                    <i class="fas fa-certificate" style="color: #22c55e; margin-right: 8px;"></i>
+                                    American Board of Internal Medicine
+                                </div>
+                            </div>
+
+                            <div class="certification-item">
+                                <div class="certification-name">
+                                    <i class="fas fa-certificate" style="color: #22c55e; margin-right: 8px;"></i>
+                                    American Board of Cardiovascular Disease
+                                </div>
+                            </div>
+
+                            <div class="certification-item">
+                                <div class="certification-name">
+                                    <i class="fas fa-certificate" style="color: #22c55e; margin-right: 8px;"></i>
+                                    Advanced Cardiac Life Support (ACLS)
+                                </div>
+                            </div>
+
+                            <button class="add-btn">
+                                <i class="fas fa-plus"></i>
+                                Add Certification
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="save-section">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Availability Tab -->
+                <div class="tab-panel" id="availability-tab">
+                    <div class="availability-section">
+                        <div class="section-header">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Weekly Availability</h3>
+                                <p class="section-description">Set your working hours for each day of the week</p>
+                            </div>
+                        </div>
+
+                        <div class="weekly-schedule">
+                            <!-- Monday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Monday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="09:00">
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="17:00">
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-available">Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Tuesday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Tuesday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="09:00">
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="17:00">
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-available">Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Wednesday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Wednesday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="09:00">
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="17:00">
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-available">Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Thursday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Thursday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="09:00">
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="17:00">
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-available">Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Friday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Friday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="09:00">
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="16:00">
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-available">Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Saturday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Saturday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="10:00" disabled>
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="14:00" disabled>
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-unavailable">Not Available</span>
+                                </div>
+                            </div>
+
+                            <!-- Sunday -->
+                            <div class="day-schedule">
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                    <span class="day-name">Sunday</span>
+                                </div>
+                                <div class="time-inputs">
+                                    <div class="time-group">
+                                        <label>Start Time</label>
+                                        <input type="time" class="time-input" value="10:00" disabled>
+                                    </div>
+                                    <div class="time-group">
+                                        <label>End Time</label>
+                                        <input type="time" class="time-input" value="14:00" disabled>
+                                    </div>
+                                </div>
+                                <div class="availability-status">
+                                    <span class="status-unavailable">Not Available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-section">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Security Tab -->
+                <div class="tab-panel" id="security-tab">
+                    <div class="profile-section">
+                        <div class="section-header">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h3>Security Settings</h3>
+                                <p class="section-description">Manage your account security and authentication settings</p>
+                            </div>
+                        </div>
+
+                        <!-- Password Section -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-key"></i>
+                                <div>
+                                    <h3>Password</h3>
+                                </div>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Password</h4>
+                                    <p>Last updated 3 months ago</p>
+                                </div>
+                                <button class="security-action">Change Password</button>
+                            </div>
+                        </div>
+
+                        <!-- Two-Factor Authentication -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-mobile-alt"></i>
+                                <div>
+                                    <h3>Two-Factor Authentication</h3>
+                                </div>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>SMS Authentication</h4>
+                                    <p>Receive verification codes via SMS</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Authenticator App</h4>
+                                    <p>Use an authenticator app for verification</p>
+                                </div>
+                                <button class="security-action">Setup</button>
+                            </div>
+                        </div>
+
+                        <!-- Login Sessions -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-laptop"></i>
+                                <div>
+                                    <h3>Active Sessions</h3>
+                                </div>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Current Session</h4>
+                                    <p>Chrome on Windows • Active now</p>
+                                </div>
+                                <span style="color: #22c55e; font-size: 12px; font-weight: 500;">CURRENT</span>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Mobile App</h4>
+                                    <p>iPhone • Last active 2 hours ago</p>
+                                </div>
+                                <button class="security-action">Revoke</button>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>All Other Sessions</h4>
+                                    <p>Sign out of all other devices</p>
+                                </div>
+                                <button class="security-action">Sign Out All</button>
+                            </div>
+                        </div>
+
+                        <!-- Privacy Settings -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-eye"></i>
+                                <div>
+                                    <h3>Privacy Settings</h3>
+                                </div>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Profile Visibility</h4>
+                                    <p>Control who can view your profile information</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option>Patients Only</option>
+                                    <option>Public</option>
+                                    <option>Private</option>
+                                </select>
+                            </div>
+
+                            <div class="security-item">
+                                <div class="security-info">
+                                    <h4>Data Sharing</h4>
+                                    <p>Allow anonymous usage data for service improvement</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-section">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Preferences Tab -->
+                <div class="tab-panel" id="preferences-tab">
+                    <div class="preferences-section">
+                        <div class="section-header">
+                            <i class="fas fa-cog"></i>
+                            <div>
+                                <h3>Application Preferences</h3>
+                                <p class="section-description">Customize your experience with notification and display settings</p>
+                            </div>
+                        </div>
+
+                        <!-- Notifications -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-bell"></i>
+                                <div>
+                                    <h3>Notifications</h3>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive email updates about appointments and messages</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>SMS Notifications</h4>
+                                    <p>Get text alerts for urgent matters</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Push Notifications</h4>
+                                    <p>Receive push notifications on your mobile device</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Marketing Communications</h4>
+                                    <p>Receive updates about new features and medical insights</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Display Settings -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-desktop"></i>
+                                <div>
+                                    <h3>Display Settings</h3>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Theme</h4>
+                                    <p>Choose your preferred color scheme</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option selected>Light Mode</option>
+                                    <option>Dark Mode</option>
+                                    <option>System Default</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Language</h4>
+                                    <p>Select your preferred language</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option selected>English (US)</option>
+                                    <option>English (UK)</option>
+                                    <option>Spanish</option>
+                                    <option>French</option>
+                                    <option>German</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Timezone</h4>
+                                    <p>Set your local timezone for appointments</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option selected>Eastern Time (ET)</option>
+                                    <option>Central Time (CT)</option>
+                                    <option>Mountain Time (MT)</option>
+                                    <option>Pacific Time (PT)</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Date Format</h4>
+                                    <p>Choose how dates are displayed</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option selected>MM/DD/YYYY</option>
+                                    <option>DD/MM/YYYY</option>
+                                    <option>YYYY-MM-DD</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Calendar Settings -->
+                        <div class="security-card">
+                            <div class="section-header">
+                                <i class="fas fa-calendar"></i>
+                                <div>
+                                    <h3>Calendar Settings</h3>
+                                </div>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Default Appointment Duration</h4>
+                                    <p>Set the default length for new appointments</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option>15 minutes</option>
+                                    <option selected>30 minutes</option>
+                                    <option>45 minutes</option>
+                                    <option>60 minutes</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Buffer Time</h4>
+                                    <p>Add buffer time between appointments</p>
+                                </div>
+                                <select style="padding: 8px 12px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 13px;">
+                                    <option>No buffer</option>
+                                    <option>5 minutes</option>
+                                    <option selected>10 minutes</option>
+                                    <option>15 minutes</option>
+                                </select>
+                            </div>
+
+                            <div class="preference-item">
+                                <div class="preference-info">
+                                    <h4>Auto-accept Appointments</h4>
+                                    <p>Automatically accept appointment requests from verified patients</p>
+                                </div>
+                                <div class="day-toggle">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="save-section">
+                        <button class="save-btn">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/profile_setting_doc.js') }}"></script>
+</body>
+</html>

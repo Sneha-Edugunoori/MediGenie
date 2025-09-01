@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Communication Center</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/doc_communication.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item active" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Communication Center</h1>
+                <p>Manage patient communications and video consultations</p>
+            </div>
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-info">
+                        <div class="user-name">Dr. Michael Rodriguez</div>
+                        <div class="user-role">Cardiologist</div>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Communication Tabs -->
+            <div class="communication-tabs">
+                <button class="tab-btn active" data-tab="messages">Messages</button>
+                <button class="tab-btn" data-tab="video">Video Consultations</button>
+                <button class="tab-btn" data-tab="notifications">Notifications</button>
+            </div>
+
+            <!-- Communication Layout -->
+            <div class="communication-layout">
+                <!-- Messages Tab Content -->
+                <div id="messages-content" class="tab-content active">
+                    <!-- Messages Panel -->
+                    <div class="messages-panel">
+                        <div class="messages-header">
+                            <h3>Messages</h3>
+                            <button class="more-btn">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        </div>
+
+                        <div class="search-messages">
+                            <div class="search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Search conversations...">
+                            </div>
+                        </div>
+
+                        <div class="messages-list">
+                            <div class="message-item active" data-patient="sarah">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #60a5fa, #3b82f6);">SJ</div>
+                                <div class="message-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <div class="message-preview">Thank you for the prescription, do...</div>
+                                    <div class="message-time">2 hours ago</div>
+                                </div>
+                                <div class="unread-indicator"></div>
+                            </div>
+
+                            <div class="message-item" data-patient="mike">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #fb923c, #f97316);">MC</div>
+                                <div class="message-info">
+                                    <h4>Mike Chen</h4>
+                                    <div class="message-preview">Doctor, I've uploaded my latest bl...</div>
+                                    <div class="message-time">4 hours ago</div>
+                                </div>
+                            </div>
+
+                            <div class="message-item" data-patient="emma">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #a78bfa, #8b5cf6);">ED</div>
+                                <div class="message-info">
+                                    <h4>Emma Davis</h4>
+                                    <div class="message-preview">The anxiety techniques you sugge...</div>
+                                    <div class="message-time">Yesterday</div>
+                                </div>
+                            </div>
+
+                            <div class="message-item" data-patient="john">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #22c55e, #16a34a);">JS</div>
+                                <div class="message-info">
+                                    <h4>John Smith</h4>
+                                    <div class="message-preview">My blood pressure readings have...</div>
+                                    <div class="message-time">2 days ago</div>
+                                </div>
+                            </div>
+
+                            <div class="message-item" data-patient="lisa">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #f59e0b, #d97706);">LW</div>
+                                <div class="message-info">
+                                    <h4>Lisa Wilson</h4>
+                                    <div class="message-preview">Is it normal to feel dizzy after...</div>
+                                    <div class="message-time">3 days ago</div>
+                                </div>
+                            </div>
+
+                            <div class="message-item" data-patient="robert">
+                                <div class="message-avatar" style="background: linear-gradient(135deg, #ef4444, #dc2626);">RB</div>
+                                <div class="message-info">
+                                    <h4>Robert Brown</h4>
+                                    <div class="message-preview">Thank you for the follow-up app...</div>
+                                    <div class="message-time">1 week ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="chat-area">
+                        <div class="chat-header">
+                            <div class="chat-patient-info">
+                                <div class="chat-patient-avatar">SJ</div>
+                                <div class="chat-patient-details">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Patient ID: #12345 • Last seen: 2 days ago</p>
+                                </div>
+                            </div>
+                            <div class="chat-actions">
+                                <button class="action-btn">
+                                    <i class="fas fa-phone"></i>
+                                    Call
+                                </button>
+                                <button class="action-btn video">
+                                    <i class="fas fa-video"></i>
+                                    Video Call
+                                </button>
+                                <button class="action-btn">
+                                    <i class="fas fa-folder-open"></i>
+                                    Records
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="chat-messages">
+                            <div class="message received">
+                                <div class="message-bubble">
+                                    Hi Dr. Rodriguez, I wanted to follow up on the prescription you gave me last week. The medication seems to be working well.
+                                    <div class="message-timestamp">Today, 10:30 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-bubble">
+                                    However, I've been experiencing some mild nausea in the mornings. Is this a normal side effect?
+                                    <div class="message-timestamp">Today, 10:31 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-bubble">
+                                    Hello Sarah! I'm glad to hear the medication is working well for you. Mild nausea can indeed be a side effect, especially during the first few weeks.
+                                    <div class="message-timestamp">Today, 11:15 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="message sent">
+                                <div class="message-bubble">
+                                    Try taking the medication with food and plenty of water. If the nausea persists or worsens, please let me know immediately.
+                                    <div class="message-timestamp">Today, 11:16 AM</div>
+                                </div>
+                            </div>
+
+                            <div class="message received">
+                                <div class="message-bubble">
+                                    Thank you for the advice, Doctor. I'll try taking it with breakfast. Should I schedule a follow-up appointment?
+                                    <div class="message-timestamp">Today, 12:45 PM</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chat-input">
+                            <div class="input-container">
+                                <textarea class="chat-input-field" placeholder="Type your message..." rows="1"></textarea>
+                                <div class="input-actions">
+                                    <button class="input-btn" title="Attach file">
+                                        <i class="fas fa-paperclip"></i>
+                                    </button>
+                                    <button class="input-btn" title="Voice message">
+                                        <i class="fas fa-microphone"></i>
+                                    </button>
+                                    <button class="input-btn" title="Emoji">
+                                        <i class="fas fa-smile"></i>
+                                    </button>
+                                </div>
+                                <button class="send-btn" title="Send message">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Consultations Tab Content -->
+                <div id="video-content" class="tab-content">
+                    <div class="video-panel">
+                        <div class="video-grid">
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>Follow-up Consultation</p>
+                                    </div>
+                                    <div class="consultation-status status-scheduled">Scheduled</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Today, 3:00 PM - 3:30 PM
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Start Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>Mike Chen</h4>
+                                        <p>Blood Pressure Check</p>
+                                    </div>
+                                    <div class="consultation-status status-ongoing">Ongoing</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Started 15 minutes ago
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Join Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">End Call</button>
+                                </div>
+                            </div>
+
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>Emma Davis</h4>
+                                        <p>Mental Health Session</p>
+                                    </div>
+                                    <div class="consultation-status status-scheduled">Scheduled</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Tomorrow, 10:00 AM - 11:00 AM
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Start Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>John Smith</h4>
+                                        <p>Routine Check-up</p>
+                                    </div>
+                                    <div class="consultation-status status-scheduled">Scheduled</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Tomorrow, 2:00 PM - 2:30 PM
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Start Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>Lisa Wilson</h4>
+                                        <p>Post-Surgery Follow-up</p>
+                                    </div>
+                                    <div class="consultation-status status-scheduled">Scheduled</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Friday, 11:00 AM - 11:30 AM
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Start Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">Reschedule</button>
+                                </div>
+                            </div>
+
+                            <div class="consultation-card">
+                                <div class="consultation-header">
+                                    <div class="consultation-info">
+                                        <h4>Robert Brown</h4>
+                                        <p>Diabetes Management</p>
+                                    </div>
+                                    <div class="consultation-status status-scheduled">Scheduled</div>
+                                </div>
+                                <div class="consultation-time">
+                                    <i class="fas fa-clock"></i> Next Monday, 9:00 AM - 9:30 AM
+                                </div>
+                                <div class="consultation-actions">
+                                    <button class="consult-btn btn-primary">
+                                        <i class="fas fa-video"></i> Start Call
+                                    </button>
+                                    <button class="consult-btn btn-secondary">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Tab Content -->
+                <div id="notifications-content" class="tab-content">
+                    <div class="notifications-panel">
+                        <div class="notification-item">
+                            <div class="notification-icon message">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>New Message from Sarah Johnson</h4>
+                                <p>Thank you for the prescription, do you think I should continue with the same dosage?</p>
+                                <div class="notification-time">2 hours ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon appointment">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Upcoming Video Consultation</h4>
+                                <p>Video call with Mike Chen scheduled for 3:00 PM today</p>
+                                <div class="notification-time">4 hours ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon reminder">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Prescription Refill Request</h4>
+                                <p>Emma Davis has requested a refill for her anxiety medication</p>
+                                <div class="notification-time">6 hours ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon message">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>New Message from John Smith</h4>
+                                <p>My blood pressure readings have been consistently high. Should I be concerned?</p>
+                                <div class="notification-time">1 day ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon appointment">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Appointment Rescheduled</h4>
+                                <p>Lisa Wilson has rescheduled her appointment to Friday, 11:00 AM</p>
+                                <div class="notification-time">2 days ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon reminder">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Patient Report Available</h4>
+                                <p>Lab results for Robert Brown are now available for review</p>
+                                <div class="notification-time">3 days ago</div>
+                            </div>
+                        </div>
+
+                        <div class="notification-item">
+                            <div class="notification-icon message">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>New Message from Emma Davis</h4>
+                                <p>The anxiety techniques you suggested are really helping. Thank you!</p>
+                                <div class="notification-time">1 week ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/doc_communication.js') }}"></script>
+</body>
+</html>

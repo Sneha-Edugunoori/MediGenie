@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Signup - MediGenie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth/government_signup.css') }}">
+</head>
+<body>
+    <div class="signup-container">
+        <button class="back-btn" onclick="goBack()">←</button>
+        
+        <div class="logo">
+            <h1>MediGenie</h1>
+        </div>
+        
+        <div class="portal-title">
+            Government Portal - Create Account
+        </div>
+
+        <div class="info-note">
+            <strong>Note:</strong> Government portal accounts require verification. You will receive a confirmation email after registration.
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Account created successfully! Please check your email for verification.
+        </div>
+
+        <form id="governmentSignupForm">
+            <div class="form-group">
+                <label for="email">Official Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="yourname@gov.in">
+                <div class="error-message" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+
+            <button type="submit" class="signup-btn">Create Account</button>
+        </form>
+
+        <div class="login-link">
+            Already have an account? <a href="government-login.html">Login here</a>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/auth/government_signup.js') }}"></script>
+</body>
+</html>

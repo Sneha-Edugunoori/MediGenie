@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Prescriptions</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/doctor_prescription.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item active" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Prescriptions</h1>
+                <p>Create and manage patient prescriptions</p>
+            </div>
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-info">
+                        <div class="user-name">Dr. Michael Rodriguez</div>
+                        <div class="user-role">Cardiologist</div>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2>Prescriptions</h2>
+                <p>Create and manage patient prescriptions and medical notes</p>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search prescriptions by patient name or medication...">
+                </div>
+                <button class="create-prescription-btn" onclick="openPrescriptionModal()">
+                    <i class="fas fa-plus"></i>
+                    Create Prescription
+                </button>
+            </div>
+
+            <!-- Prescriptions Grid -->
+            <div class="prescriptions-grid">
+                <!-- Prescription Card 1 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar blue">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Sarah Johnson</h3>
+                            <div class="meta">34 years, Female</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-14</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Hypertension</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>2 medications</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-redo"></i>
+                            <span class="refills-info">2 refills left</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Lisinopril 10mg</div>
+                                </div>
+                                <div class="medication-dosage">Once daily</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Hydrochlorothiazide 25mg</div>
+                                </div>
+                                <div class="medication-dosage">Once daily</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn" onclick="editPrescription('sarah-johnson')">
+                            <i class="fas fa-edit"></i>
+                            Edit Prescription
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prescription Card 2 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar orange">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Mike Chen</h3>
+                            <div class="meta">45 years, Male</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-12</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Diabetes Type 2</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>2 medications</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-redo"></i>
+                            <span class="refills-info">1 refill left</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Metformin 500mg</div>
+                                </div>
+                                <div class="medication-dosage">Twice daily</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Glimepiride 2mg</div>
+                                </div>
+                                <div class="medication-dosage">Once daily</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn" onclick="editPrescription('mike-chen')">
+                            <i class="fas fa-edit"></i>
+                            Edit Prescription
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prescription Card 3 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar purple">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Emma Davis</h3>
+                            <div class="meta">28 years, Female</div>
+                        </div>
+                        <div class="status-badge status-completed">completed</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-10</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Anxiety Disorder</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>1 medication</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Treatment complete</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Sertraline 50mg</div>
+                                </div>
+                                <div class="medication-dosage">Once daily</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prescription Card 4 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar green">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>John Smith</h3>
+                            <div class="meta">52 years, Male</div>
+                        </div>
+                        <div class="status-badge status-completed">completed</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-08</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Upper Respiratory Infection</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>2 medications</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Treatment complete</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Amoxicillin 500mg</div>
+                                </div>
+                                <div class="medication-dosage">Three times daily</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Dextromethorphan 15mg</div>
+                                </div>
+                                <div class="medication-dosage">As needed</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-copy"></i>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prescription Card 5 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar orange">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>Lisa Wilson</h3>
+                            <div class="meta">41 years, Female</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-15</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Asthma</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>3 medications</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-redo"></i>
+                            <span class="refills-info">3 refills left</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Albuterol Inhaler</div>
+                                </div>
+                                <div class="medication-dosage">As needed</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Fluticasone 110mcg</div>
+                                </div>
+                                <div class="medication-dosage">Twice daily</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Montelukast 10mg</div>
+                                </div>
+                                <div class="medication-dosage">Once daily</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn">
+                            <i class="fas fa-edit"></i>
+                            Edit Prescription
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Prescription Card 6 -->
+                <div class="prescription-card">
+                    <div class="prescription-header">
+                        <div class="patient-avatar purple">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="patient-info">
+                            <h3>David Brown</h3>
+                            <div class="meta">38 years, Male</div>
+                        </div>
+                        <div class="status-badge status-active">active</div>
+                    </div>
+
+                    <div class="prescription-details">
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>Created: 2024-01-09</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tag"></i>
+                            <span>Chronic Back Pain</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-pills"></i>
+                            <span>2 medications</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-redo"></i>
+                            <span class="refills-info">1 refill left</span>
+                        </div>
+                    </div>
+
+                    <div class="condition-section">
+                        <div class="condition-label">Medications</div>
+                        <div class="medications-list">
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Ibuprofen 600mg</div>
+                                </div>
+                                <div class="medication-dosage">Three times daily</div>
+                            </div>
+                            <div class="medication-item">
+                                <div>
+                                    <div class="medication-name">Cyclobenzaprine 10mg</div>
+                                </div>
+                                <div class="medication-dosage">At bedtime</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="view-details-btn">
+                            <i class="fas fa-edit"></i>
+                            Edit Prescription
+                        </button>
+                    </div>
+                    <div class="action-buttons" style="margin-top: 8px;">
+                        <button class="action-btn">
+                            <i class="fas fa-download"></i>
+                            Download
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-print"></i>
+                            Print
+                        </button>
+                        <button class="action-btn">
+                            <i class="fas fa-eye"></i>
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prescription Modal -->
+    <div class="modal-overlay" id="prescriptionModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Create New Prescription</h3>
+                <button class="close-btn" onclick="closePrescriptionModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-content">
+                <form id="prescriptionForm">
+                    <div class="form-group">
+                        <label for="patientSelect">Patient</label>
+                        <select id="patientSelect" name="patient" required>
+                            <option value="">Select a patient</option>
+                            <option value="sarah-johnson">Sarah Johnson</option>
+                            <option value="mike-chen">Mike Chen</option>
+                            <option value="emma-davis">Emma Davis</option>
+                            <option value="john-smith">John Smith</option>
+                            <option value="lisa-wilson">Lisa Wilson</option>
+                            <option value="david-brown">David Brown</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diagnosis">Diagnosis</label>
+                        <input type="text" id="diagnosis" name="diagnosis" placeholder="Enter diagnosis">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prescriptionText">Prescription Details</label>
+                        <div class="prescription-input-container">
+                            <textarea 
+                                id="prescriptionText" 
+                                name="prescriptionText" 
+                                placeholder="Enter prescription details, medications, dosages, and instructions...&#10;&#10;Example:&#10;Medication: Lisinopril 10mg&#10;Dosage: Once daily&#10;Duration: 30 days&#10;Instructions: Take with food&#10;&#10;You can also use the microphone button to dictate your prescription."
+                                required
+                            ></textarea>
+                            <button 
+                                type="button" 
+                                class="voice-input-btn tooltip" 
+                                id="voiceBtn"
+                                data-tooltip="Click to dictate prescription"
+                                onclick="toggleVoiceInput()"
+                            >
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                        </div>
+                        <div class="voice-status" id="voiceStatus"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="refills">Number of Refills</label>
+                        <select id="refills" name="refills">
+                            <option value="0">0 refills</option>
+                            <option value="1">1 refill</option>
+                            <option value="2">2 refills</option>
+                            <option value="3">3 refills</option>
+                            <option value="4">4 refills</option>
+                            <option value="5">5 refills</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Additional Notes (Optional)</label>
+                        <textarea id="notes" name="notes" placeholder="Any additional notes for the patient or pharmacy..." rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closePrescriptionModal()">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-primary" onclick="savePrescription()">
+                    <i class="fas fa-save"></i>
+                    Save Prescription
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/doctor_prescription.js') }}"></script>
+</body>
+</html>

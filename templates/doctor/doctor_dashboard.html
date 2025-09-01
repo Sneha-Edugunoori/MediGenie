@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Doctor Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/doctor_dashboard.css') }}">
+</head>
+<body>
+    <!-- Sidebar - Direct Implementation -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item active" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Good Morning, Dr. Anderson</h1>
+                <p>You have 4 appointments scheduled for today</p>
+            </div>
+            <div class="navbar-right">
+                <div class="date-display">
+                    <div class="today-label">Today</div>
+                    <div class="date">8/31/2025</div>
+                </div>
+                
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-info">
+                        <div class="user-name">Dr. Anderson</div>
+                        <div class="user-role">Cardiologist</div>
+                    </div>
+                    <i class="fas fa-chevron-down dropdown-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            <!-- Welcome Section -->
+            <div class="welcome-section">
+                <h2>Welcome back, Dr. Anderson!</h2>
+                <p>Your medical practice continues here</p>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>12</h3>
+                        <p>Today's Patients</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>3</h3>
+                        <p>Pending Appointments</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>248</h3>
+                        <p>Active Patients</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>186</h3>
+                        <p>This Month</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Today's Appointments -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Today's Appointments</h3>
+                        <a href="doctor_appointments.html" class="view-all-btn">View Calendar</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment-item">
+                            <div class="patient-avatar" style="background: #60a5fa;">SJ</div>
+                            <div class="appointment-info">
+                                <h4>Sarah Johnson</h4>
+                                <p>Regular Checkup</p>
+                            </div>
+                            <div class="appointment-time">
+                                <div class="time">09:00 AM</div>
+                            </div>
+                            <div class="status-badge status-confirmed">confirmed</div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="patient-avatar" style="background: #f97316;">MC</div>
+                            <div class="appointment-info">
+                                <h4>Mike Chen</h4>
+                                <p>Follow-up</p>
+                            </div>
+                            <div class="appointment-time">
+                                <div class="time">10:30 AM</div>
+                            </div>
+                            <div class="status-badge status-confirmed">confirmed</div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="patient-avatar" style="background: #8b5cf6;">ED</div>
+                            <div class="appointment-info">
+                                <h4>Emma Davis</h4>
+                                <p>Consultation</p>
+                            </div>
+                            <div class="appointment-time">
+                                <div class="time">02:00 PM</div>
+                            </div>
+                            <div class="status-badge status-pending">pending</div>
+                        </div>
+                        
+                        <div class="appointment-item">
+                            <div class="patient-avatar" style="background: #22c55e;">JS</div>
+                            <div class="appointment-info">
+                                <h4>John Smith</h4>
+                                <p>Prescription Review</p>
+                            </div>
+                            <div class="appointment-time">
+                                <div class="time">03:30 PM</div>
+                            </div>
+                            <div class="status-badge status-confirmed">confirmed</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Notifications</h3>
+                        <a href="#" class="view-all-btn">View All</a>
+                    </div>
+                    <div class="card-content">
+                        <div class="notification-item">
+                            <div class="notification-icon" style="background: #60a5fa;">
+                                <i class="fas fa-calendar-plus"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>New appointment request</h4>
+                                <p>Alex Wilson requested an appointment</p>
+                                <div class="notification-time">5 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-icon" style="background: #f97316;">
+                                <i class="fas fa-comment"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Patient message</h4>
+                                <p>Sarah Johnson sent you a message</p>
+                                <div class="notification-time">15 minutes ago</div>
+                            </div>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-icon" style="background: #22c55e;">
+                                <i class="fas fa-flask"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Lab results uploaded</h4>
+                                <p>Lab results for Mike Chen are ready</p>
+                                <div class="notification-time">1 hour ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/doctor_dashboard.js') }}"></script>
+</body>
+</html>

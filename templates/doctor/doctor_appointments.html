@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediGenie - Appointment Management</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/doctor/doctor_appointments.css') }}">
+
+</head>
+<body>
+    <!-- Correct MediGenie Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>MediGenie</h2>
+                    <p>Doctor Portal</p>
+                </div>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="doctor_dashboard.html" class="nav-item" id="dashboard-link">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="doctor_appointments.html" class="nav-item active" id="appointments-link">
+                <i class="fas fa-calendar-check"></i>
+                <span>Appointments</span>
+            </a>
+            
+            <a href="doc_patient_records.html" class="nav-item" id="patient-records-link">
+                <i class="fas fa-folder-open"></i>
+                <span>Patient Records</span>
+            </a>
+            
+            <a href="doc_communication.html" class="nav-item" id="communication-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+            
+            <a href="doctor_prescription.html" class="nav-item" id="prescription-link">
+                <i class="fas fa-prescription-bottle-alt"></i>
+                <span>Prescriptions</span>
+            </a>
+            
+            <a href="analytics.html" class="nav-item" id="analytics-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="profile_setting_doc.html" class="nav-item" id="profile-link">
+                <i class="fas fa-user-md"></i>
+                <span>Profile & Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="login.html" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <div class="top-navbar">
+            <div class="navbar-left">
+                <h1>Appointment Management</h1>
+                <p>Manage your appointment requests and schedule</p>
+            </div>
+            <div class="navbar-right">
+                <div class="notification-bell">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">2</span>
+                </div>
+                <div class="user-profile">
+                    <div class="user-avatar">DR</div>
+                    <div class="user-name">Dr. Michael Rodriguez</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn" data-tab="requests">
+                    <i class="fas fa-inbox"></i>
+                    <span>Requests</span>
+                    <span class="tab-badge">3</span>
+                </button>
+                <button class="tab-btn" data-tab="confirmed">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Confirmed</span>
+                    <span class="tab-badge">2</span>
+                </button>
+                <button class="tab-btn active" data-tab="calendar">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Calendar View</span>
+                </button>
+            </div>
+
+            <!-- Requests Tab -->
+            <div class="tab-content" id="requests-tab">
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search by patient name...">
+                    </div>
+                    <select class="filter-dropdown">
+                        <option>Filter by type</option>
+                        <option>Regular Checkup</option>
+                        <option>Follow-up</option>
+                        <option>Consultation</option>
+                        <option>Emergency</option>
+                    </select>
+                </div>
+
+                <div class="requests-container">
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="patient-avatar-large">SJ</div>
+                            <div class="request-patient-info">
+                                <h3>Alex Wilson</h3>
+                                <div class="patient-age">Age: 31</div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 555-0126</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>alex.wilson@email.com</span>
+                            </div>
+                        </div>
+                        <div class="request-details">
+                            <div class="detail-group">
+                                <div class="detail-label">Confirmed</div>
+                                <div class="detail-value">Today at 09:30 AM</div>
+                            </div>
+                            <div class="detail-group">
+                                <div class="detail-label">Type</div>
+                                <div class="detail-value">Regular Checkup</div>
+                            </div>
+                            <div class="detail-group">
+                                <div class="detail-label">Status</div>
+                                <div class="detail-value" style="color: #22c55e; font-weight: 600;">Confirmed</div>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn-primary action-btn">Start Visit</button>
+                            <button class="btn-secondary action-btn">Reschedule</button>
+                        </div>
+                    </div>
+
+                    <div class="request-card">
+                        <div class="request-header">
+                            <div class="patient-avatar-large" style="background: linear-gradient(135deg, #f59e0b, #d97706);">JD</div>
+                            <div class="request-patient-info">
+                                <h3>Jane Doe</h3>
+                                <div class="patient-age">Age: 42</div>
+                            </div>
+                        </div>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+1 555-0127</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>jane.doe@email.com</span>
+                            </div>
+                        </div>
+                        <div class="request-details">
+                            <div class="detail-group">
+                                <div class="detail-label">Confirmed</div>
+                                <div class="detail-value">Tomorrow at 02:15 PM</div>
+                            </div>
+                            <div class="detail-group">
+                                <div class="detail-label">Type</div>
+                                <div class="detail-value">Follow-up</div>
+                            </div>
+                            <div class="detail-group">
+                                <div class="detail-label">Status</div>
+                                <div class="detail-value" style="color: #22c55e; font-weight: 600;">Confirmed</div>
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn-secondary action-btn">View Details</button>
+                            <button class="btn-secondary action-btn">Reschedule</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar View Tab -->
+            <div class="tab-content active" id="calendar-tab">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <div class="calendar-nav">
+                            <button class="nav-btn" id="prev-month">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <div class="current-month" id="current-month">August 2025</div>
+                            <button class="nav-btn" id="next-month">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="calendar-actions">
+                            <button class="action-btn btn-secondary">
+                                <i class="fas fa-download"></i>
+                                Export
+                            </button>
+                            <button class="action-btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                Add Appointment
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <!-- Day Headers -->
+                        <div class="calendar-day-header">Sun</div>
+                        <div class="calendar-day-header">Mon</div>
+                        <div class="calendar-day-header">Tue</div>
+                        <div class="calendar-day-header">Wed</div>
+                        <div class="calendar-day-header">Thu</div>
+                        <div class="calendar-day-header">Fri</div>
+                        <div class="calendar-day-header">Sat</div>
+
+                        <!-- Calendar Days with Appointments -->
+                        <div class="calendar-day">
+                            <div class="day-number other-month">27</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">28</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">29</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">30</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">31</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">1</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">2</div>
+                            <div class="appointment-slot confirmed">09:00 - Sarah J.</div>
+                        </div>
+                        
+                        <div class="calendar-day">
+                            <div class="day-number">3</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">4</div>
+                            <div class="appointment-slot pending">10:30 - Mike C.</div>
+                            <div class="appointment-slot confirmed">14:00 - Emma D.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">5</div>
+                            <div class="appointment-slot confirmed">09:30 - Alex W.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">6</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">7</div>
+                            <div class="appointment-slot confirmed">11:00 - Jane D.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">8</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">9</div>
+                        </div>
+                        
+                        <div class="calendar-day">
+                            <div class="day-number">10</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">11</div>
+                            <div class="appointment-slot confirmed">10:00 - Robert K.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">12</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">13</div>
+                            <div class="appointment-slot pending">15:30 - Lisa M.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">14</div>
+                            <div class="appointment-slot confirmed">09:00 - David L.</div>
+                            <div class="appointment-slot confirmed">13:30 - Maria S.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">15</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">16</div>
+                        </div>
+                        
+                        <div class="calendar-day">
+                            <div class="day-number">17</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">18</div>
+                            <div class="appointment-slot confirmed">11:30 - Tom B.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">19</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">20</div>
+                            <div class="appointment-slot pending">16:00 - Anna P.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">21</div>
+                            <div class="appointment-slot confirmed">08:30 - John R.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">22</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">23</div>
+                        </div>
+                        
+                        <div class="calendar-day">
+                            <div class="day-number">24</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">25</div>
+                            <div class="appointment-slot confirmed">12:00 - Kevin H.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">26</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">27</div>
+                            <div class="appointment-slot pending">14:30 - Susan T.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">28</div>
+                            <div class="appointment-slot confirmed">10:15 - Paul W.</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number">29</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number today">31</div>
+                            <div class="appointment-slot confirmed">09:00 - Current</div>
+                            <div class="appointment-slot pending">15:00 - Pending</div>
+                        </div>
+                        
+                        <div class="calendar-day">
+                            <div class="day-number other-month">1</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">2</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">3</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">4</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">5</div>
+                        </div>
+                        <div class="calendar-day">
+                            <div class="day-number other-month">6</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/doctor/doctor_appointments.js') }}"></script>
+</body>
+</html>
